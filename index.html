@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redux Docs Clone</title>
+    <link rel="icon" type="image/x-icon" href="logo192.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav id="navbar">
+            <header>
+                <h1 class="nav-h1">Redux.js Documentation</h1>
+            </header>
+                <ul class="nav-ul">
+                    <li><a class="nav-link" href="#Getting_Started">Getting Started</a></li>
+                    <li><a class="nav-link" href="#Installation">Installation</a></li>
+                    <li class="sub"><a class="nav-link" href="#Redux_Toolkit">Redux Toolkit</a></li>
+                    <li class="sub"><a class="nav-link" href="#Create_a_React_Redux_App">Create a React Redux App</a></li>
+                    <li class="sub"><a class="nav-link" href="#Redux_Core">Redux Core</a></li>
+                    <li><a class="nav-link" href="#Basic_Example">Basic Example</a></li>
+                    <li class="sub"><a class="nav-link" href="#Legacy_Example">Legacy Example</a></li>
+                    <li><a class="nav-link" href="#Learn_Redux">Learn Redux</a href="#"></li>
+                    <li class="sub"><a class="nav-link" href="#Redux_Essentials_Tutorial">Redux Essentials Tutorial</a></li>
+                    <li class="sub"><a class="nav-link" href="#Redux_Fundamentals_Tutorial">Redux Fundamentals Tutorial</a></li>
+                    <li class="sub"><a class="nav-link" href="#Additional_Tutorials">Additional Tutorials</a></li>
+                    <li><a class="nav-link" href="#Should_You_Use_Redux">Should You Use Redux?</a></li>
+                </ul>
+        </nav>
+        <main id="main-doc">
+            <section class="main-section" id="Getting_Started">
+                <header>
+                    <h1 class="section-h1">Getting started</h1>
+                </header>
+
+                <p>Redux is a JS library for predictable and maintainable global state management.</p>
+
+                <p>It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as <a href="https://github.com/reduxjs/redux-devtools" target="_blank">live code editing combined with a time traveling debugger.</a>
+                </p>
+
+                <p>You can use Redux together with <a href="https://react.dev/" target="_blank">React</a>, or with any other view library. It is tiny (2kB, including dependencies), but has a large ecosystem of addons available.</p>
+
+                <p><a href="https://redux-toolkit.js.org/" target="_blank">Redux Toolkit</a> is our official recommended approach for writing Redux logic. It wraps around the Redux core, and contains packages and functions that we think are essential for building a Redux app. Redux Toolkit builds in our suggested best practices, simplifies most Redux tasks, prevents common mistakes, and makes it easier to write Redux applications.</p>
+
+                <p>RTK includes utilities that help simplify many common use cases, including <a href="https://redux-toolkit.js.org/api/configureStore" target="_blank">store setup</a>, <a href="https://redux-toolkit.js.org/api/createreducer" target="_blank">creating reducers and writing immutable update logic </a>, and even <a href="https://redux-toolkit.js.org/api/createslice" target="_blank">creating entire "slices" of state at once.</a></p>
+
+                <p>Whether you're a brand new Redux user setting up your first project, or an experienced user who wants to simplify an existing application, <a href="https://redux-toolkit.js.org/" target="_blank">Redux Toolkit</a> can help you make your Redux code better.</p>
+
+
+            </section>
+            <section class="main-section" id="Installation">
+                <header>
+                    <h1 class="section-h1">Installation</h1>
+                </header>
+            </section>
+            <section class="main-section" id="Redux_Toolkit">
+                <header>
+                    <h2 class="section-h2">Redux Toolkit</h2>
+                </header>
+                <p>Redux Toolkit is available as a package on NPM for use with a module bundler or in a Node application:
+                </p>
+
+                <code>
+                    <p># NPM</p>
+                    <p>npm install @reduxjs/toolkit</p>
+                </code>
+                <code>
+                    <p># Yarn</p>
+                    <p>yarn add @reduxjs/toolkit</p>
+                </code>
+            </section>
+            <section class="main-section" id="Create_a_React_Redux_App">
+                <header>
+                    <h2 class="section-h2">Create a React Redux App</h2>
+                </header>
+
+                <p>The recommended way to start new apps with React and Redux is by using <a href="https://github.com/reduxjs/redux-templates" target="_blank">our official Redux+TS template for Vite</a>, or by creating a new Next.js project using <a href="https://github.com/vercel/next.js/tree/canary/examples/with-redux" target="_blank">Next's with-redux template</a>.</p>
+
+                <p>Both of these already have Redux Toolkit and React-Redux configured appropriately for that build tool, and come with a small example app that demonstrates how to use several of Redux Toolkit's features.</p>
+
+                <code>
+                    <p># Vite with our Redux+TS template</p>
+                    <p># (using the `degit` tool to clone and extract the template)</p>
+                    <p>npx degit reduxjs/redux-templates/packages/vite-template-redux my-app</p>
+                    <p># Next.js using the `with-redux` template</p>
+                    <p>npx create-next-app --example with-redux my-app</p>
+                </code>
+            </section>
+            <section class="main-section" id="Redux_Core">
+                <header>
+                    <h2 class="section-h2">Redux Core</h2>
+                </header>
+                <p>The Redux core library is available as a package on NPM for use with a module bundler or in a Node application:</p>
+
+                <code>
+                    <p># NPM</p>
+                    <p>npm install redux</p>
+                </code>
+                <code>
+                    <p># Yarn</p>
+                    <p>yarn add redux</p>
+                </code>
+
+                <p>For more details, see the <a href="https://redux.js.org/introduction/installation" target="_blank">Installation page</a>.</p>
+            </section>
+            <section class="main-section" id="Basic_Example">
+                <header>
+                    <h1 class="section-h1">Basic Example</h1>
+                </header>
+                <p>The whole global state of your app is stored in an object tree inside a single store. The only way to change the state tree is to create an action, an object describing what happened, and dispatch it to the store. To specify how state gets updated in response to an action, you write pure reducer functions that calculate a new state based on the old state and the action.
+                </p>
+
+                <p>Redux Toolkit simplifies the process of writing Redux logic and setting up the store. With Redux Toolkit, the basic app logic looks like:</p>
+                
+                <pre>
+                    import { createSlice, configureStore } from '@reduxjs/toolkit'
+
+                    const counterSlice = createSlice({
+                    name: 'counter',
+                    initialState: {
+                        value: 0
+                    },
+                    reducers: {
+                        incremented: state => {
+                        // Redux Toolkit allows us to write "mutating" logic in reducers. It
+                        // doesn't actually mutate the state because it uses the Immer library,
+                        // which detects changes to a "draft state" and produces a brand new
+                        // immutable state based off those changes
+                        state.value += 1
+                        },
+                        decremented: state => {
+                        state.value -= 1
+                        }
+                    }
+                    })
+
+                    export const { incremented, decremented } = counterSlice.actions
+
+                    const store = configureStore({
+                    reducer: counterSlice.reducer
+                    })
+
+                    // Can still subscribe to the store
+                    store.subscribe(() => console.log(store.getState()))
+
+                    // Still pass action objects to `dispatch`, but they're created for us
+                    store.dispatch(incremented())
+                    // {value: 1}
+                    store.dispatch(incremented())
+                    // {value: 2}
+                    store.dispatch(decremented())
+                    // {value: 1}
+                </pre>
+
+                <p>Instead of mutating the state directly, you specify the mutations you want to happen with plain objects called actions. Then you write a special function called a reducer to decide how every action transforms the entire application's state.</p>
+
+                <p>In a typical Redux app, there is just a single store with a single root reducer function. As your app grows, you split the root reducer into smaller reducers independently operating on the different parts of the state tree. This is exactly like how there is just one root component in a React app, but it is composed out of many small components.</p>
+
+                <p>This architecture might seem like a lot for a counter app, but the beauty of this pattern is how well it scales to large and complex apps. It also enables very powerful developer tools, because it is possible to trace every mutation to the action that caused it. You can record user sessions and reproduce them just by replaying every action.</p>
+
+                <p>Redux Toolkit allows us to write shorter logic that's easier to read, while still following the same Redux behavior and data flow.</p>
+            </section>
+            <section class="main-section" id="Legacy_Example">
+                <header>
+                    <h2 class="section-h2">Legacy Example</h1>
+                </header>
+
+                <p>For comparison, the original Redux legacy syntax (with no abstractions) looks like this:</p>
+
+                <pre>
+                    import { createStore } from 'redux'
+
+                    /**
+                    * This is a reducer - a function that takes a current state value and an
+                    * action object describing "what happened", and returns a new state value.
+                    * A reducer's function signature is: (state, action) => newState
+                    *
+                    * The Redux state should contain only plain JS objects, arrays, and primitives.
+                    * The root state value is usually an object. It's important that you should
+                    * not mutate the state object, but return a new object if the state changes.
+                    *
+                    * You can use any conditional logic you want in a reducer. In this example,
+                    * we use a switch statement, but it's not required.
+                    */
+                    function counterReducer(state = { value: 0 }, action) {
+                    switch (action.type) {
+                        case 'counter/incremented':
+                        return { value: state.value + 1 }
+                        case 'counter/decremented':
+                        return { value: state.value - 1 }
+                        default:
+                        return state
+                    }
+                    }
+
+                    // Create a Redux store holding the state of your app.
+                    // Its API is { subscribe, dispatch, getState }.
+                    let store = createStore(counterReducer)
+
+                    // You can use subscribe() to update the UI in response to state changes.
+                    // Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
+                    // There may be additional use cases where it's helpful to subscribe as well.
+
+                    store.subscribe(() => console.log(store.getState()))
+
+                    // The only way to mutate the internal state is to dispatch an action.
+                    // The actions can be serialized, logged or stored and later replayed.
+                    store.dispatch({ type: 'counter/incremented' })
+                    // {value: 1}
+                    store.dispatch({ type: 'counter/incremented' })
+                    // {value: 2}
+                    store.dispatch({ type: 'counter/decremented' })
+                    // {value: 1}
+                </pre>
+
+            </section>
+            <section class="main-section" id="Learn_Redux">
+                <header>
+                    <h1 class="section-h1">Learn Redux</h1>
+                </header>
+                <p>We have a variety of resources available to help you learn Redux.</p>
+            </section>
+            <section class="main-section" id="Redux_Essentials_Tutorial">
+                <header>
+                    <h2 class="section-h2">Redux Essentials Tutorial</h2>
+                </header>
+
+                <p>The <a href="https://redux.js.org/tutorials/essentials/part-1-overview-concepts" target="_blank">Redux Essentials tutorial</a> is a "top-down" tutorial that teaches "how to use Redux the right way", using our latest recommended APIs and best practices. We recommend starting there.</p>
+
+            </section>
+            <section class="main-section" id="Redux_Fundamentals_Tutorial">
+                <header>
+                    <h2 class="section-h2">Redux Fundamentals Tutorial</h2>
+                </header>
+
+                <p>The <a href="https://redux.js.org/tutorials/fundamentals/part-1-overview" target="_blank">Redux Fundamentals tutorial</a> is a "bottom-up" tutorial that teaches "how Redux works" from first principles and without any abstractions, and why standard Redux usage patterns exist.</p>
+
+            </section>
+            <section class="main-section" id="Additional_Tutorials">
+                <header>
+                    <h2 class="section-h2">Additional Tutorials</h2>
+                </header>
+
+                <ul id="section-ul">
+                    <li>
+                        <p>The Redux repository contains several example projects demonstrating various aspects of how to use Redux. Almost all examples have a corresponding CodeSandbox sandbox. This is an interactive version of the code that you can play with online. See the complete list of examples in the <a href="https://redux.js.org/introduction/examples" target="_blank">Examples page.</a></p>
+                    </li>
+                    <li>
+                        <p>
+                            Redux creator Dan Abramov's free <a href="https://app.egghead.io/playlists/fundamentals-of-redux-course-from-dan-abramov-bd5cc867" target="_blank">"Getting Started with Redux" video series</a> and <a href="https://egghead.io/courses/building-react-applications-with-idiomatic-redux" target="_blank">Building React Applications with Idiomatic Redux </a> video courses on Egghead.io
+                        </p>
+                    </li>
+                    <li>
+                        <p>Redux maintainer Mark Erikson's <a href="https://blog.isquaredsoftware.com/2018/03/presentation-reactathon-redux-fundamentals/" target="_blank">"Redux Fundamentals" conference talk</a> and <a href="https://blog.isquaredsoftware.com/2018/06/redux-fundamentals-workshop-slides/" target="_blank">"Redux Fundamentals" workshop slides</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>Dave Ceddia's post <a href="https://daveceddia.com/redux-tutorial/" target="_blank">A Complete React Redux Tutorial for Beginners</a>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+            <section class="main-section" id="Should_You_Use_Redux">
+                <header>
+                    <h1 class="section-h1">
+                        Should You Use Redux?
+                    </h1>
+                </header>
+                <p>
+                    Redux is a valuable tool for organizing your state, but you should also consider whether it's appropriate for your situation. <span>Don't use Redux just because someone said you should - take some time to understand the potential benefits and tradeoffs of using it.</span>
+                </p>
+
+                <p>Here are some suggestions on when it makes sense to use Redux:</p>
+
+                <ul id="section-ul">
+                    <li>
+                        <p>
+                            You have reasonable amounts of data changing over time
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            You need a single source of truth for your state
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            You find that keeping all your state in a top-level component is no longer sufficient
+
+                        </p>
+                    </li>
+                </ul>
+            </section>
+            
+        </main>
+        <footer><p>Source: <a href="https://redux.js.org/introduction/getting-started" target="_blank">Redux</a></p></footer>
+    </div>
+</body>
+</html>
